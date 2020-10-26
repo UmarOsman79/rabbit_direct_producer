@@ -11,6 +11,7 @@ import lombok.*;
 @EqualsAndHashCode(callSuper = false)
 public class Person {
 
+	private int age;
 	private String name;
 	private String surname;
 
