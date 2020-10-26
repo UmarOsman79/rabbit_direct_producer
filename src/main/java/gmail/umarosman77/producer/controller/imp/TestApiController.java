@@ -18,9 +18,21 @@ public class TestApiController implements TestApi {
 	public ResponseEntity<Void> testPost() {
 		try {
 			rabbitMQSender.send(Person.builder()
-					.name("Mia")
-					.surname("Jaffer")
+					.age(25)
+					.name("Umar")
+					.surname("Osman")
 					.build());
+			return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+
+	@Override
+	public ResponseEntity<Void> testPost(Person person) {
+		try {
+			rabbitMQSender.send(person);
 			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
